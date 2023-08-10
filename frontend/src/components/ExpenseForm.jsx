@@ -3,12 +3,12 @@ import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {useGlobalContext} from '../context/globalContext';
-import Button from '../components/Button';
+import Button from './Button';
 import {plus} from "../utils/icons";
 
 
-function Form () {
-    const {addIncome, getIncomes} = useGlobalContext()
+function ExpenseForm () {
+    const {addExpense, getExpenses} = useGlobalContext()
 
 
     const [inputState, setInputState] = useState({
@@ -29,8 +29,8 @@ function Form () {
 
     const handleSubmit = event => {
         event.preventDefault()
-        addIncome(inputState)
-        getIncomes()
+        addExpense(inputState)
+        getExpenses()
         setInputState({
             title: '',
             amount: '',
@@ -38,11 +38,10 @@ function Form () {
             description: '',
             date: ''
         })
-        console.log(inputState);
     }
 
     return (
-        <FormStyled onSubmit={handleSubmit}>
+        <ExpenseFormStyled onSubmit={handleSubmit}>
             <div className="input-control">
                 <input type="text" value={title} name={'title'} placeholder='Salary Title' onChange={handleInput('title')} />
             </div>
@@ -70,7 +69,7 @@ function Form () {
             <div className="submit-btn">
                <Button
                     onClick={handleSubmit}
-                    name={'Add income'}
+                    name={'Add expense'}
                     icon={plus}
                     bPad={'0.8rem 1.6rem'}
                     bRad={'30px'}
@@ -79,11 +78,11 @@ function Form () {
                     hColor={'red'}
                />
             </div> 
-        </FormStyled>
+        </ExpenseFormStyled>
     )
 }
 
-const FormStyled = styled.div`
+const ExpenseFormStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -126,4 +125,4 @@ const FormStyled = styled.div`
     }
 `;
 
-export default Form
+export default ExpenseForm

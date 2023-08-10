@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components"
-import {dollar, calendar, comment, trash, money, freelance, stocks, bitcoin, card, yt, piggy, book, food, medical, takeaway, clothing, circle} from "../utils/icons";
+import {dollar, calendar, comment, trash, money, freelance, stocks, bitcoin, card, yt, piggy, book, food, medical, takeaway, clothing, circle, users, tv} from "../utils/icons";
 import Button from '../components/Button';
 
 function IncomeItem({id, title, amount, date, category, description, deleteItem, indicatorColor, type}) {
@@ -11,7 +11,7 @@ function IncomeItem({id, title, amount, date, category, description, deleteItem,
                 return money
             case 'freelancing':
                 return freelance
-            case 'investment':
+            case 'investments':
                 return stocks;
             case 'bitcoin':
                 return bitcoin;
@@ -19,6 +19,8 @@ function IncomeItem({id, title, amount, date, category, description, deleteItem,
                 return card;
             case 'youtube':
                 return yt;
+            case 'stocks':
+                return users;
             case 'other':
                 return piggy;
             default:
@@ -53,8 +55,7 @@ function IncomeItem({id, title, amount, date, category, description, deleteItem,
     return (
         <IncomeItemStyled indicator={indicatorColor}>
             <div className="icon">
-                {type === 'expense' ? expenseCategoryItem() : incomeCategoryIcon()}
-                
+                {type === 'expense' ? expenseCategoryIcon() : incomeCategoryIcon()}   
             </div>
             <div className="content">
                 <h5>{title}</h5>
@@ -73,6 +74,7 @@ function IncomeItem({id, title, amount, date, category, description, deleteItem,
                             color={'#fff'}
                             iColor={'#fff'}
                             hColor={'var(--color-green)'}
+                            onClick={() => deleteItem(id)}
                             
                         />
                     </div>
@@ -124,7 +126,9 @@ const IncomeItemStyled = styled.div`
                 transform: translateY(-50%);
                 width: 0.8rem;
                 height: 0.8rem;
+                border-radius: 50%;
                 background: ${props => props.indicatorColor};
+                background: var(--color-green);
             }
         }
         .inner-content{

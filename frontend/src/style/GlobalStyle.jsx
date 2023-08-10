@@ -11,8 +11,8 @@ export const GlobalStyle = createGlobalStyle`
     :root{
         --primary-color: #222260;
         --primary-color2: 'color: rgba(34, 34, 96, .6)';
-        --primary-color3: 'color: rgna(34, 34, 96, .4)';
-        --color-green: #424AD00;
+        --primary-color3: 'color: rgba(34, 34, 96, .4)';
+        --color-green: #2E8B57;
         --color-grey: #aaa;
         --color-accent: #F56692;
         --color-delete: #FF0000;
@@ -23,5 +23,9 @@ export const GlobalStyle = createGlobalStyle`
         font-size: clamp(1rem, 1.5vw, 1.2rem);
         overflow: hidden;
         color: rgba(34, 34, 96, .6);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--primary-color);
     }
 `;

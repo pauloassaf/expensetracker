@@ -10,22 +10,19 @@ const addIncome = async(req, res) => {
     description,
     date
    })
-
-   console.log(income); 
-   
+ 
    try {
         if(!title || !category || !description  || !date) {
         return res.status(400).json({message: "All fields are required"})
             }
         if(amount <= 0 || !amount === 'number'){
-        return res.status(400).json({message: "Wrong amount"})
+        return res.status(400).json("Wrong amount")
             }
         await income.save()
-        res.status(200).json({message: "Income added"})
+        res.status(200).json("Income added")
    } catch (error) {
-        return res.status(500).json({message: "Cant add income"})
+        return res.status(500).json("Cant add income")
    }
-   console.log(income)
 }
 
 const getIncome = async (req, res) => {
