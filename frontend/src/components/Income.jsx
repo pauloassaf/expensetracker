@@ -2,8 +2,8 @@ import React, {useContext, useEffect} from "react";
 import styled from "styled-components";
 import {InnerLayout} from "../style/Layouts";
 import {useGlobalContext} from '../context/globalContext';
-import Form from './Form';
-import IncomeItem from './IncomeItem';
+import IncomeForm from './IncomeForm';
+import AddedItem from './AddedItem';
 
 
 function Income() {
@@ -22,18 +22,19 @@ function Income() {
                 </h2>
                 <div className="income-content">
                     <div className="form-container">
-                        <Form />
+                        <IncomeForm />
                     </div>
                     <div className="incomes">
                         {incomes.map((income) => {
-                            const {_id, title, amount, date, category, description} = income;
-                            return <IncomeItem
+                            const {_id, title, amount, date, category, description, type} = income;
+                            return <AddedItem
                                 key={_id}
                                 id={_id}
                                 title={title}
                                 description={description}
                                 amount={amount}
                                 date={date}
+                                type={type}
                                 category={category}
                                 indicatorColor="var(--color-green"
                                 deleteItem={deleteIncome}

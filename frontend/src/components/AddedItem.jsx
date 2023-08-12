@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from "styled-components"
 import {dollar, calendar, comment, trash, money, freelance, stocks, bitcoin, card, yt, piggy, book, food, medical, takeaway, clothing, circle, users, tv} from "../utils/icons";
-import Button from '../components/Button';
+import Button from './Button';
+import dateFormat from '../utils/dateFormat';
 
-function IncomeItem({id, title, amount, date, category, description, deleteItem, indicatorColor, type}) {
+function AddedItem({id, title, amount, date, category, description, deleteItem, indicatorColor, type}) {
 
     const incomeCategoryIcon = () => {
         switch(category) {
@@ -30,24 +31,24 @@ function IncomeItem({id, title, amount, date, category, description, deleteItem,
 
     const expenseCategoryIcon = () => {
         switch (category) {
-        case 'education':
-            return book;
-        case 'groceries':
-            return food;
-        case 'health':
-            return medical;
-        case 'subscriptions':
-            return tv;
-        case 'takeaways':
-            return takeaway;
-        case 'clothing':
-            return clothing;
-        case 'travelling':
-            return freelance;
-        case 'other':
-            return circle;
-        default:
-            return '';
+            case 'education':
+                return book;
+            case 'groceries':
+                return food;
+            case 'health':
+                return medical;
+            case 'subscriptions':
+                return tv;
+            case 'takeaways':
+                return takeaway;
+            case 'clothing':
+                return clothing;
+            case 'travelling':
+                return freelance;
+            case 'other':
+                return circle;
+            default:
+                return '';
         }
     }
 
@@ -62,7 +63,7 @@ function IncomeItem({id, title, amount, date, category, description, deleteItem,
                 <div className="inner-content">
                     <div className="text">
                         <p>{dollar}{amount}</p>
-                        <p>{calendar}{date}</p>
+                        <p>{calendar}{dateFormat(date)}</p>
                         <p>{comment}{description}</p>
                     </div>
                     <div className="btn-container">
@@ -153,4 +154,4 @@ const IncomeItemStyled = styled.div`
 `; 
 
 
-export default IncomeItem
+export default AddedItem
