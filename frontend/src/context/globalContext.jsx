@@ -7,7 +7,6 @@ export const GlobalProvider = ({children}) => {
 
     const [incomes, setIncomes] = useState([])
     const [expenses, setExpenses] = useState([])
-    const [error, setError] = useState(null)
 
     const addIncome = async (income) => {
         try {
@@ -17,8 +16,10 @@ export const GlobalProvider = ({children}) => {
             body: JSON.stringify(income)
         })
         const data = await response.json();
+
         } catch (error) {
-            setError('Cant add income')
+            console.error('cant add income', error)
+
         }
         getIncomes()
     }
@@ -28,8 +29,8 @@ export const GlobalProvider = ({children}) => {
             const response = await fetch('http://localhost:5000/api/v1/get-income')
             const data = await response.json();
             setIncomes(data);
-        } catch (error) {
-            setError('Cant get incomes')
+        } catch (err) {
+            return setError('Cant get incomes')
         }
     }
 
@@ -102,10 +103,24 @@ export const GlobalProvider = ({children}) => {
     }
 
 
+    const totalBalance = () => {
+        return totalIncome() - totalExpenses()
+    }
+
+    const transactionHistory = () => {
+        const history = [...incomes, ...expenses]
+        history.sort((a,b) => {
+            return new Date(b.createdAt) - new Date(a.createdAt)
+        })
+        return history.slice(0, 4)
+    }
+
+
 
 
     return (
-        <GlobalContext.Provider value={{addIncome, getIncomes, incomes, deleteIncome, totalIncome, addExpense, getExpenses, deleteExpense, totalExpenses, expenses}}>
+        <GlobalContext.Provider value={{addIncome, getIncomes, incomes, deleteIncome, totalIncome,
+         addExpense, getExpenses, deleteExpense, totalExpenses, expenses, totalBalance, transactionHistory}}>
             {children}
         </GlobalContext.Provider>
     )

@@ -7,7 +7,7 @@ import Button from './Button';
 import {plus} from "../utils/icons";
 
 
-function Form () {
+function IncomeForm () {
     const {addIncome, getIncomes} = useGlobalContext()
 
 
@@ -38,11 +38,10 @@ function Form () {
             description: '',
             date: ''
         })
-        console.log(inputState);
     }
 
     return (
-        <FormStyled onSubmit={handleSubmit}>
+        <FormStyled onSubmit={handleSubmit}>     
             <div className="input-control">
                 <input type="text" value={title} name={'title'} placeholder='Salary Title' onChange={handleInput('title')} />
             </div>
@@ -126,4 +125,4 @@ const FormStyled = styled.div`
     }
 `;
 
-export default Form
+export default IncomeForm
