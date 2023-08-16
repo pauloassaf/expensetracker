@@ -10,7 +10,7 @@ export const GlobalProvider = ({children}) => {
 
     const addIncome = async (income) => {
         try {
-        const response = await fetch('https://brick-red-bullfrog-sari.cyclic.app/add-income', {
+        const response = await fetch('https://brick-red-bullfrog-sari.cyclic.app/api/v1/add-income', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(income)
@@ -36,7 +36,7 @@ export const GlobalProvider = ({children}) => {
 
     const deleteIncome = async (id) => {
         try {
-            const response = await fetch(`https://brick-red-bullfrog-sari.cyclic.app/delete-income/${id}`, {
+            const response = await fetch(`https://brick-red-bullfrog-sari.cyclic.app/api/v1/delete-income/${id}`, {
             method: 'delete'
             })
             const data = await response.json()
@@ -58,7 +58,7 @@ export const GlobalProvider = ({children}) => {
 
     const addExpense = async (expense) => {
         try {
-            const response = await fetch('https://brick-red-bullfrog-sari.cyclic.app/add-expense', {
+            const response = await fetch('https://brick-red-bullfrog-sari.cyclic.app/api/v1/add-expense', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(expense)
@@ -83,7 +83,7 @@ export const GlobalProvider = ({children}) => {
 
     const deleteExpense = async (id) => {
         try {
-            const response = await fetch(`hhttps://brick-red-bullfrog-sari.cyclic.app/delete-expense/${id}`, {
+            const response = await fetch(`https://brick-red-bullfrog-sari.cyclic.app/api/v1/delete-expense/${id}`, {
             method: 'delete'
             })
             const data = await response.json()
