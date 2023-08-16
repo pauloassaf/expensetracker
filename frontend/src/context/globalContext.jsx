@@ -10,7 +10,7 @@ export const GlobalProvider = ({children}) => {
 
     const addIncome = async (income) => {
         try {
-        const response = await fetch('http://localhost:5000/api/v1/add-income', {
+        const response = await fetch('https://brick-red-bullfrog-sari.cyclic.app/add-income', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(income)
@@ -26,7 +26,7 @@ export const GlobalProvider = ({children}) => {
 
     const getIncomes = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/v1/get-income')
+            const response = await fetch('https://brick-red-bullfrog-sari.cyclic.app/api/v1/get-income')
             const data = await response.json();
             setIncomes(data);
         } catch (err) {
@@ -36,7 +36,7 @@ export const GlobalProvider = ({children}) => {
 
     const deleteIncome = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/v1/delete-income/${id}`, {
+            const response = await fetch(`https://brick-red-bullfrog-sari.cyclic.app/delete-income/${id}`, {
             method: 'delete'
             })
             const data = await response.json()
@@ -58,7 +58,7 @@ export const GlobalProvider = ({children}) => {
 
     const addExpense = async (expense) => {
         try {
-            const response = await fetch('http://localhost:5000/api/v1/add-expense', {
+            const response = await fetch('https://brick-red-bullfrog-sari.cyclic.app/add-expense', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(expense)
@@ -73,7 +73,7 @@ export const GlobalProvider = ({children}) => {
    
     const getExpenses = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/v1/get-expense')
+            const response = await fetch('https://brick-red-bullfrog-sari.cyclic.app/api/v1/get-expense')
             const data = await response.json();
             setExpenses(data);
         } catch (error) {
@@ -83,7 +83,7 @@ export const GlobalProvider = ({children}) => {
 
     const deleteExpense = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/v1/delete-expense/${id}`, {
+            const response = await fetch(`hhttps://brick-red-bullfrog-sari.cyclic.app/delete-expense/${id}`, {
             method: 'delete'
             })
             const data = await response.json()

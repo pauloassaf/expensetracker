@@ -16,15 +16,17 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors());
 
-//routers
-readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
+
 
 
 const server = () => {
     db()
     app.listen(PORT, () => {
-        console.log('listening to port', PORT)
+        console.log(`listening to port ${PORT}`);
     })
 }
 
 server()
+
+//routers
+readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
