@@ -5,9 +5,9 @@ const db = async () => {
     try {
         mongoose.set('strictQuery', false)
         await mongoose.connect(process.env.MONGO_URL)
-        console.log("DB CONNECTED ALL GOOD")
+        console.log("db CONNECTED ALL GOOD!")
     } catch (error) {
-        console.log("DB CONNECTION ERROR MASTER FAIL")
+        console.log("db connect FAIL")
     }
 }
 
